@@ -1,4 +1,4 @@
-import type { TransformOptions } from "stream";
+import type { TransformOptions } from "@babel/core";
 
 import type { Context } from "./context";
 
