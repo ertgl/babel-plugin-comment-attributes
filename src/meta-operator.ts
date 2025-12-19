@@ -5,7 +5,6 @@ import type {
 
 import type { Context } from "./context";
 import type { MetaOperatorMetadata } from "./meta-operator-metadata";
-
 import { SYMBOL_META_OPERATOR } from "./meta-operator-symbol";
 
 export interface MetaOperator extends MetaOperatorFunction
