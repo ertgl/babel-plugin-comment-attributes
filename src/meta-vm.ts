@@ -11,7 +11,6 @@ import {
 } from "@babel/core";
 
 import type { Context } from "./context";
-
 import { isMetaOperator } from "./meta-operator";
 
 export function evalMetaSource(

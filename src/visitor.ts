@@ -3,13 +3,12 @@ import type {
   Visitor,
 } from "@babel/core";
 
-import type { VisitorOptions } from "./visitor-options";
-
 import { createContext } from "./context";
 import { cfg } from "./meta-lib";
 import { extractMetaSource } from "./meta-source";
 import { transpileMetaSource } from "./meta-transpiler";
 import { evalMetaSource } from "./meta-vm";
+import type { VisitorOptions } from "./visitor-options";
 
 export function createVisitor(
   options?: null | VisitorOptions,
