@@ -4,11 +4,9 @@ export function cfg<
 >(
   value: T,
 ): null;
-
 export function cfg<T>(
   value: T,
 ): T;
-
 export function cfg<T>(
   value: T,
 ): null | T
