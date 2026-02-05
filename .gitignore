@@ -11,6 +11,9 @@ dist/
 # Husky artifacts
 .husky/_/
 
+# Misc
+.DS_Store
+
 # Package manager artifacts
 .yarn/
 node_modules/
