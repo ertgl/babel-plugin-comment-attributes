@@ -1,16 +1,16 @@
 import {
-  type BabelFileResult,
+  type FileResult,
+  type InputOptions,
   parseSync,
   transformFromAstSync,
-  type TransformOptions,
 } from "@babel/core";
 
 import { resolveMetaTransformOptions } from "./meta-transform-options";
 
 export function transpileMetaSource(
   source: string,
-  transformOptions?: null | TransformOptions,
-): BabelFileResult | null
+  transformOptions?: InputOptions | null,
+): FileResult | null
 {
   transformOptions = resolveMetaTransformOptions(transformOptions);
 

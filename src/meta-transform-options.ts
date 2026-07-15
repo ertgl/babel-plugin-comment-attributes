@@ -1,8 +1,8 @@
-import type { TransformOptions } from "@babel/core";
+import type { InputOptions } from "@babel/core";
 
 export function resolveMetaTransformOptions(
-  transformOptions?: null | TransformOptions,
-): TransformOptions
+  transformOptions?: InputOptions | null,
+): InputOptions
 {
   transformOptions ??= {};
 

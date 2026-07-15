@@ -18,7 +18,7 @@ export function createVisitor(
 
   const context = createContext(options.context);
 
-  const cwd = options.cwd;
+  const cwd = options.cwd ?? undefined;
 
   const shouldRemoveMetaComments = (
     options.removeMetaComments
@@ -39,11 +39,14 @@ export function createVisitor(
       programPath.traverse({
         enter(path)
         {
+          // @ts-expect-error - Missing types.
           if (path.removed)
           {
             return;
           }
 
+          // @ts-expect-error - Missing types.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (path.node.leadingComments == null)
           {
             return;
@@ -52,21 +55,27 @@ export function createVisitor(
           const commentIndexesToKeep: Set<number> = new Set();
           const commentIndexesToRemove: Set<number> = new Set();
 
+          // @ts-expect-error - Missing types.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           const leadingComments = path.node.leadingComments;
 
           for (
             let commentIdx = 0;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             commentIdx < leadingComments.length;
             commentIdx++
           )
           {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
             const comment = leadingComments[commentIdx];
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (comment.ignore)
             {
               continue;
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
             const source = extractMetaSource(comment.value);
 
             if (!source)
@@ -92,6 +101,7 @@ export function createVisitor(
               programPath,
               programState,
               path,
+              // @ts-expect-error - Missing types.
               path.state,
               {
                 cfg,
@@ -104,8 +114,10 @@ export function createVisitor(
                 __META_AST__: transpiled.ast,
                 __META_BABEL_FILE__: transpiled,
                 __META_SOURCE__: source,
+                // @ts-expect-error - Missing types.
                 __NODE__: path.node,
                 __NODE_PATH__: path,
+                // @ts-expect-error - Missing types.
                 __NODE_STATE__: path.state,
                 __PROGRAM_NODE__: programPath.node,
                 __PROGRAM_NODE_PATH__: programPath,
@@ -115,14 +127,16 @@ export function createVisitor(
                 ),
               },
               transpiled,
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
               comment.loc,
             );
 
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            // @ts-expect-error - Missing types.
             if (path.removed)
             {
               for (const comment of leadingComments)
               {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 comment.ignore = true;
               }
 
@@ -140,6 +154,7 @@ export function createVisitor(
 
           for (const commentIdx of commentIndexesToRemove)
           {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             leadingComments[commentIdx].ignore = true;
           }
         },
