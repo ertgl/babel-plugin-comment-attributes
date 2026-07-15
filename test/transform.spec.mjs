@@ -168,16 +168,23 @@ void test(
         esm: false,
         remove: () =>
         {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
           return defineMetaOperator({
             name: "remove",
             operate: (
+              // @ts-expect-error - Missing types.
               programPath,
+              // @ts-expect-error - Missing types.
               programState,
+              // @ts-expect-error - Missing types.
               nodePath,
+              // @ts-expect-error - Missing types.
               nodeState,
+              // @ts-expect-error - Missing types.
               context,
             ) =>
             {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               nodePath.remove();
             },
           });
