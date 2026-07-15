@@ -1,4 +1,4 @@
-import type { TransformOptions } from "@babel/core";
+import type { InputOptions } from "@babel/core";
 
 import type { Context } from "./context";
 
@@ -6,5 +6,5 @@ export interface Options
 {
   context?: Context | null;
   removeMetaComments?: boolean | null;
-  transformOptions?: null | TransformOptions;
+  transformOptions?: InputOptions | null;
 }

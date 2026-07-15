@@ -3,12 +3,12 @@ import {
   runInNewContext,
 } from "node:vm";
 
-import {
-  type BabelFileResult,
-  type Node,
-  type NodePath,
-  type PluginPass,
+import type {
+  FileResult,
+  NodePath,
+  PluginPass,
 } from "@babel/core";
+import type { Node } from "@babel/types";
 
 import type { Context } from "./context";
 import { isMetaOperator } from "./meta-operator";
@@ -19,7 +19,7 @@ export function evalMetaSource(
   nodePath: NodePath,
   nodeState: unknown,
   context: Context,
-  transpiled: BabelFileResult,
+  transpiled: FileResult,
   loc?: Exclude<Node["leadingComments"], null | undefined>[number]["loc"] | null,
 ): unknown
 {
